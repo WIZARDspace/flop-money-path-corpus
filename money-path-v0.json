@@ -1,0 +1,636 @@
+{
+  "version": "money-path-v0",
+  "source": "flop-labs/yellowpaper@3c97bbc8d6ba68cf2ea003ab88bc154aafdf105e",
+  "base_unit_per_flop": 1000000000000000000,
+  "cases": [
+    {
+      "issue": "yellowpaper#71",
+      "rule": "R10.5 + R10.1 conservation",
+      "pack_vectors": "A<L, A=L, A>L with L=10000 (sv 2026-09-28); A=0 added as the degenerate attestation",
+      "vectors": [
+        {
+          "inputs": {
+            "L": 10000,
+            "A": 6200
+          },
+          "readings": {
+            "A_multi_output": {
+              "legs": {
+                "redeemer": 6200,
+                "locker": 3800,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": false
+            },
+            "A_clamp": {
+              "legs": {
+                "redeemer": 6200,
+                "locker": 3800,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": false
+            },
+            "B_stranded": {
+              "legs": {
+                "redeemer": 6200,
+                "locker": 0,
+                "escrow": 3800
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": false,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": false
+            },
+            "C_full_lock": {
+              "legs": {
+                "redeemer": 10000,
+                "locker": 0,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": true,
+              "redeemer_underpaid_after_work": false
+            }
+          }
+        },
+        {
+          "inputs": {
+            "L": 10000,
+            "A": 10000
+          },
+          "readings": {
+            "A_multi_output": {
+              "legs": {
+                "redeemer": 10000,
+                "locker": 0,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": false
+            },
+            "A_clamp": {
+              "legs": {
+                "redeemer": 10000,
+                "locker": 0,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": false
+            },
+            "B_stranded": {
+              "legs": {
+                "redeemer": 10000,
+                "locker": 0,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": false
+            },
+            "C_full_lock": {
+              "legs": {
+                "redeemer": 10000,
+                "locker": 0,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": false
+            }
+          }
+        },
+        {
+          "inputs": {
+            "L": 10000,
+            "A": 12000
+          },
+          "readings": {
+            "A_multi_output": {
+              "rejected": "AttestedExceedsLock"
+            },
+            "A_clamp": {
+              "legs": {
+                "redeemer": 10000,
+                "locker": 0,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": true
+            },
+            "B_stranded": {
+              "rejected": "AttestedExceedsLock"
+            },
+            "C_full_lock": {
+              "legs": {
+                "redeemer": 10000,
+                "locker": 0,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": true
+            }
+          }
+        },
+        {
+          "inputs": {
+            "L": 10000,
+            "A": 0
+          },
+          "readings": {
+            "A_multi_output": {
+              "legs": {
+                "redeemer": 0,
+                "locker": 10000,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": false
+            },
+            "A_clamp": {
+              "legs": {
+                "redeemer": 0,
+                "locker": 10000,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": false
+            },
+            "B_stranded": {
+              "legs": {
+                "redeemer": 0,
+                "locker": 0,
+                "escrow": 10000
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": false,
+              "redeemer_paid_for_unattested_work": false,
+              "redeemer_underpaid_after_work": false
+            },
+            "C_full_lock": {
+              "legs": {
+                "redeemer": 10000,
+                "locker": 0,
+                "escrow": 0
+              },
+              "conserves_L": true,
+              "terminal_escrow_zero": true,
+              "redeemer_paid_for_unattested_work": true,
+              "redeemer_underpaid_after_work": false
+            }
+          }
+        }
+      ]
+    },
+    {
+      "issue": "yellowpaper#79",
+      "rule": "R12.1a + F.3 agent receipt row + audit_fee_split_ppm",
+      "finding": "F.3's receipt row already answers pack item 2: `payable` is gross for cooperative settle, the R12.1d tariff P for force_settle, and contract_payment for forward channels, and 'the net transfer to the miner is payable less the audit earmark' for all three. Item 3 stays open: no text names floor or ceil for payable x ppm / 1e6, and the two differ by one base unit whenever payable x ppm is not a multiple of 1e6.",
+      "vectors": [
+        {
+          "inputs": {
+            "payable": 1000,
+            "path": "settle",
+            "audit_fee_split_ppm": 10000
+          },
+          "readings": {
+            "full_escrow_no_carve": {
+              "miner": 1000,
+              "audit_pool": 0
+            },
+            "carve_floor": {
+              "miner": 990,
+              "audit_pool": 10
+            },
+            "carve_ceil": {
+              "miner": 990,
+              "audit_pool": 10
+            }
+          },
+          "floor_ceil_diverge": false
+        },
+        {
+          "inputs": {
+            "payable": 1050,
+            "path": "settle",
+            "audit_fee_split_ppm": 10000
+          },
+          "readings": {
+            "full_escrow_no_carve": {
+              "miner": 1050,
+              "audit_pool": 0
+            },
+            "carve_floor": {
+              "miner": 1040,
+              "audit_pool": 10
+            },
+            "carve_ceil": {
+              "miner": 1039,
+              "audit_pool": 11
+            }
+          },
+          "floor_ceil_diverge": true
+        },
+        {
+          "inputs": {
+            "payable": 99,
+            "path": "settle",
+            "audit_fee_split_ppm": 10000
+          },
+          "readings": {
+            "full_escrow_no_carve": {
+              "miner": 99,
+              "audit_pool": 0
+            },
+            "carve_floor": {
+              "miner": 99,
+              "audit_pool": 0
+            },
+            "carve_ceil": {
+              "miner": 98,
+              "audit_pool": 1
+            }
+          },
+          "floor_ceil_diverge": true
+        },
+        {
+          "inputs": {
+            "payable": 1000000000000000000,
+            "path": "settle",
+            "audit_fee_split_ppm": 10000
+          },
+          "readings": {
+            "full_escrow_no_carve": {
+              "miner": 1000000000000000000,
+              "audit_pool": 0
+            },
+            "carve_floor": {
+              "miner": 990000000000000000,
+              "audit_pool": 10000000000000000
+            },
+            "carve_ceil": {
+              "miner": 990000000000000000,
+              "audit_pool": 10000000000000000
+            }
+          },
+          "floor_ceil_diverge": false
+        },
+        {
+          "inputs": {
+            "payable": 1000000000000000050,
+            "path": "settle",
+            "audit_fee_split_ppm": 10000
+          },
+          "readings": {
+            "full_escrow_no_carve": {
+              "miner": 1000000000000000050,
+              "audit_pool": 0
+            },
+            "carve_floor": {
+              "miner": 990000000000000050,
+              "audit_pool": 10000000000000000
+            },
+            "carve_ceil": {
+              "miner": 990000000000000049,
+              "audit_pool": 10000000000000001
+            }
+          },
+          "floor_ceil_diverge": true
+        },
+        {
+          "inputs": {
+            "payable": 1050,
+            "path": "force_settle",
+            "audit_fee_split_ppm": 10000
+          },
+          "readings": {
+            "full_escrow_no_carve": {
+              "miner": 1050,
+              "audit_pool": 0
+            },
+            "carve_floor": {
+              "miner": 1040,
+              "audit_pool": 10
+            },
+            "carve_ceil": {
+              "miner": 1039,
+              "audit_pool": 11
+            }
+          },
+          "floor_ceil_diverge": true
+        }
+      ]
+    },
+    {
+      "issue": "yellowpaper#80",
+      "rule": "R5.4e C_rent, R5.4f per-provider cumulative rounding and replacement settlement",
+      "vectors": [
+        {
+          "inputs": {
+            "c": 1,
+            "T": 2,
+            "p": 1,
+            "q": 2,
+            "original_serves": 1
+          },
+          "readings": {
+            "own_counter": {
+              "C_rent_slot": 1,
+              "original": 1,
+              "replacement": 1,
+              "total_released": 2,
+              "within_cap": false,
+              "replacement_paid_for_served_blocks": true
+            },
+            "own_counter_capped": {
+              "C_rent_slot": 1,
+              "original": 1,
+              "replacement": 0,
+              "total_released": 1,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": false
+            },
+            "slot_counter": {
+              "C_rent_slot": 1,
+              "original": 1,
+              "replacement": 0,
+              "total_released": 1,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": false
+            },
+            "remainder_carry": {
+              "C_rent_slot": 1,
+              "original": 0,
+              "replacement": 1,
+              "total_released": 1,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": true
+            }
+          }
+        },
+        {
+          "inputs": {
+            "c": 3,
+            "T": 10,
+            "p": 1,
+            "q": 4,
+            "original_serves": 3
+          },
+          "readings": {
+            "own_counter": {
+              "C_rent_slot": 8,
+              "original": 3,
+              "replacement": 6,
+              "total_released": 9,
+              "within_cap": false,
+              "replacement_paid_for_served_blocks": true
+            },
+            "own_counter_capped": {
+              "C_rent_slot": 8,
+              "original": 3,
+              "replacement": 5,
+              "total_released": 8,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": false
+            },
+            "slot_counter": {
+              "C_rent_slot": 8,
+              "original": 3,
+              "replacement": 5,
+              "total_released": 8,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": false
+            },
+            "remainder_carry": {
+              "C_rent_slot": 8,
+              "original": 2,
+              "replacement": 6,
+              "total_released": 8,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": true
+            }
+          }
+        },
+        {
+          "inputs": {
+            "c": 1,
+            "T": 100,
+            "p": 1,
+            "q": 3,
+            "original_serves": 50
+          },
+          "readings": {
+            "own_counter": {
+              "C_rent_slot": 34,
+              "original": 17,
+              "replacement": 17,
+              "total_released": 34,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": true
+            },
+            "own_counter_capped": {
+              "C_rent_slot": 34,
+              "original": 17,
+              "replacement": 17,
+              "total_released": 34,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": true
+            },
+            "slot_counter": {
+              "C_rent_slot": 34,
+              "original": 17,
+              "replacement": 17,
+              "total_released": 34,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": true
+            },
+            "remainder_carry": {
+              "C_rent_slot": 34,
+              "original": 16,
+              "replacement": 18,
+              "total_released": 34,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": true
+            }
+          }
+        },
+        {
+          "inputs": {
+            "c": 7,
+            "T": 9,
+            "p": 2,
+            "q": 5,
+            "original_serves": 4
+          },
+          "readings": {
+            "own_counter": {
+              "C_rent_slot": 26,
+              "original": 12,
+              "replacement": 14,
+              "total_released": 26,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": true
+            },
+            "own_counter_capped": {
+              "C_rent_slot": 26,
+              "original": 12,
+              "replacement": 14,
+              "total_released": 26,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": true
+            },
+            "slot_counter": {
+              "C_rent_slot": 26,
+              "original": 12,
+              "replacement": 14,
+              "total_released": 26,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": true
+            },
+            "remainder_carry": {
+              "C_rent_slot": 26,
+              "original": 11,
+              "replacement": 15,
+              "total_released": 26,
+              "within_cap": true,
+              "replacement_paid_for_served_blocks": true
+            }
+          }
+        }
+      ]
+    },
+    {
+      "issue": "yellowpaper#48",
+      "rule": "R12.2 slot release; R12.1d force_settle -> finalize; A7",
+      "inputs": {
+        "max_active_reservations_base": 4,
+        "escrowed": 0
+      },
+      "conformance": "open x4 -> force_settle -> finalize -> open must succeed (sv pack)",
+      "readings": {
+        "literal_R12_2": {
+          "trace": [
+            {
+              "event": "force_settle",
+              "active": 4
+            },
+            {
+              "event": "finalize",
+              "active": 4
+            }
+          ],
+          "reopen_without_extra_escrow": false,
+          "slots_lost_permanently": 1,
+          "slot_held_during_challenge_window": true
+        },
+        "free_at_finalize": {
+          "trace": [
+            {
+              "event": "force_settle",
+              "active": 4
+            },
+            {
+              "event": "finalize",
+              "active": 3
+            }
+          ],
+          "reopen_without_extra_escrow": true,
+          "slots_lost_permanently": 0,
+          "slot_held_during_challenge_window": true
+        },
+        "free_at_force_settle": {
+          "trace": [
+            {
+              "event": "force_settle",
+              "active": 3
+            },
+            {
+              "event": "finalize",
+              "active": 3
+            }
+          ],
+          "reopen_without_extra_escrow": true,
+          "slots_lost_permanently": 0,
+          "slot_held_during_challenge_window": false
+        }
+      }
+    },
+    {
+      "issue": "yellowpaper#70",
+      "rule": "R5.3d Leased class; P1; pack item 5 transition test",
+      "note": "withdraw_lease is named in no rule of the mirror; amounts are illustrative units",
+      "vectors": [
+        {
+          "pinned": false,
+          "readings": {
+            "withdraw_wins": {
+              "withdraw": "ok",
+              "deposit_to_publisher": 1000,
+              "lease_end": "now",
+              "storage_duty_continues": false,
+              "topup_was_cancellable": true
+            },
+            "extension_binds": {
+              "withdraw": "rejected:ExtendedTermBinds",
+              "deposit_to_publisher": 0,
+              "lease_end": 210,
+              "storage_duty_continues": true,
+              "publisher_deposit_locked_by_third_party_days": 30
+            },
+            "withdraw_ignores_pins": {
+              "withdraw": "ok",
+              "deposit_to_publisher": 1000,
+              "lease_end": "now",
+              "storage_duty_continues": false,
+              "pinned_consumer_loses_data": false
+            }
+          }
+        },
+        {
+          "pinned": true,
+          "readings": {
+            "withdraw_wins": {
+              "withdraw": "rejected:Pinned",
+              "deposit_to_publisher": 0,
+              "lease_end": 210,
+              "storage_duty_continues": true
+            },
+            "extension_binds": {
+              "withdraw": "rejected:Pinned",
+              "deposit_to_publisher": 0,
+              "lease_end": 210,
+              "storage_duty_continues": true
+            },
+            "withdraw_ignores_pins": {
+              "withdraw": "ok",
+              "deposit_to_publisher": 1000,
+              "lease_end": "now",
+              "storage_duty_continues": false,
+              "pinned_consumer_loses_data": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
