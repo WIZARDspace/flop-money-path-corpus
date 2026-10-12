@@ -207,7 +207,10 @@ def case_48() -> dict:
     return {
         "issue": "yellowpaper#48",
         "rule": "R12.2 slot release; R12.1d force_settle -> finalize; A7",
-        "inputs": {"max_active_reservations_base": BASE_SLOTS, "escrowed": 0},
+        "inputs": {"max_active_reservations_base": BASE_SLOTS, "escrow_granted_slots": 0},
+        "assumption": ("each channel escrows less than escrow_per_reservation_slot (50 FLOP), so no "
+                       "slot is granted by escrow; under #134's readings A/B a channel of 50 FLOP or "
+                       "more funds its own slot and this cycle cannot lose one"),
         "conformance": "open x4 -> force_settle -> finalize -> open must succeed (sv pack)",
         "readings": {r: slot_cycle(r) for r in ("literal_R12_2", "free_at_finalize", "free_at_force_settle")},
     }

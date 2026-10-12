@@ -21,7 +21,7 @@ Standard library only. Python ≥ 3.10. Exact arithmetic (`fractions.Fraction`),
 | #71 | R10.5 variable settle vs fixed lock | multi-output (A), silent clamp, stranded residual (B), full lock (C, main today per the pack) | L=10000: A=6200 → 6200/3800/0; A>L rejects under A; B strands; clamp underpays |
 | #79 | R12.1a gross `payable` vs F.3 audit earmark | no carve, 1% carve with floor, 1% carve with ceil | E=1000 → 1000/0 and 990/10 |
 | #80 | R5.4e/R5.4f replacement-provider rent | own counter, own counter clipped to remainder, one counter per slot (continuation), remainder carry | c=1,T=2,p/q=1/2 → C_rent=1, literal release 2 |
-| #48 | R12.2 slot release on unilateral close | literal event list, free at `finalize`, free at `force_settle` | open×4 → force_settle → finalize → open fails literally, succeeds at finalize |
+| #48 | R12.2 slot release on unilateral close | literal event list, free at `finalize`, free at `force_settle` | open×4 → force_settle → finalize → open fails literally, succeeds at finalize (channels escrow < 50 FLOP each; see #134 for how escrow grants slots) |
 | #70 | R5.3d lease top-up vs withdrawal | withdraw wins, extension binds, withdraw ignores pins | transition test register → third-party top-up → withdraw, pinned and unpinned |
 
 ## What the vectors show beyond the issue threads
