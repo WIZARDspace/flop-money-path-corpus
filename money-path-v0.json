@@ -1,6 +1,6 @@
 {
   "version": "money-path-v0",
-  "source": "flop-labs/yellowpaper@3c97bbc8d6ba68cf2ea003ab88bc154aafdf105e",
+  "source": "flop-labs/yellowpaper@b03378c0a6d5194d69e5be90968f46e8e6813cb8",
   "base_unit_per_flop": 1000000000000000000,
   "cases": [
     {
@@ -343,7 +343,11 @@
     },
     {
       "issue": "yellowpaper#80",
-      "rule": "R5.4e C_rent, R5.4f per-provider cumulative rounding and replacement settlement",
+      "rule": "R5.4e C_rent, R5.4f replacement settlement (single funding tranche)",
+      "ratified": {
+        "reading": "slot_counter",
+        "by": "D-0524 / R5.4f slot-tranche position accumulator"
+      },
       "vectors": [
         {
           "inputs": {
@@ -579,7 +583,11 @@
     {
       "issue": "yellowpaper#70",
       "rule": "R5.3d Leased class; P1; pack item 5 transition test",
-      "note": "withdraw_lease is named in no rule of the mirror; amounts are illustrative units",
+      "note": "amounts are illustrative units",
+      "ratified": {
+        "reading": "withdraw_wins",
+        "by": "R5.3f: publisher-only, rejected while pinned; a top-up never binds"
+      },
       "vectors": [
         {
           "pinned": false,

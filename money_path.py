@@ -11,7 +11,7 @@ reading: the corpus makes the divergence executable so a decision can be checked
     uv run --script money_path.py --write    # regenerate money-path-v0.json
     uv run --script money_path.py --check    # fail if the JSON is stale or an expectation breaks
 
-Source text: flop-labs/yellowpaper@3c97bbc8 (yellowpaper.md). Packs: sv's 2026-09-28
+Source text: flop-labs/yellowpaper@b03378c0 (yellowpaper.md, 0.5.0 draft sync). Packs: sv's 2026-09-28
 discharge comments on yellowpaper #71, #79, #80, #48, #70.
 """
 
@@ -23,7 +23,7 @@ from fractions import Fraction
 from math import ceil, floor
 from pathlib import Path
 
-SOURCE = "flop-labs/yellowpaper@3c97bbc8d6ba68cf2ea003ab88bc154aafdf105e"
+SOURCE = "flop-labs/yellowpaper@b03378c0a6d5194d69e5be90968f46e8e6813cb8"
 OUT = Path(__file__).with_name("money-path-v0.json")
 PPM = 1_000_000
 FLOP = 10**18  # base units per FLOP (R12.1d)
@@ -169,7 +169,8 @@ def case_80() -> dict:
         vectors.append(row)
     return {
         "issue": "yellowpaper#80",
-        "rule": "R5.4e C_rent, R5.4f per-provider cumulative rounding and replacement settlement",
+        "rule": "R5.4e C_rent, R5.4f replacement settlement (single funding tranche)",
+        "ratified": {"reading": "slot_counter", "by": "D-0524 / R5.4f slot-tranche position accumulator"},
         "vectors": vectors,
     }
 
@@ -243,7 +244,8 @@ def case_70() -> dict:
     return {
         "issue": "yellowpaper#70",
         "rule": "R5.3d Leased class; P1; pack item 5 transition test",
-        "note": "withdraw_lease is named in no rule of the mirror; amounts are illustrative units",
+        "note": "amounts are illustrative units",
+        "ratified": {"reading": "withdraw_wins", "by": "R5.3f: publisher-only, rejected while pinned; a top-up never binds"},
         "vectors": [{"pinned": pin, "readings": {r: lease_sequence(r, pin) for r in readings}}
                     for pin in (False, True)],
     }
@@ -274,9 +276,15 @@ def expectations(c: dict) -> list[str]:
     v80 = by["yellowpaper#80"]["vectors"][0]["readings"]
     if v80["own_counter"]["C_rent_slot"] != 1 or v80["own_counter"]["total_released"] != 2:
         bad.append("#80 c=1,T=2,p/q=1/2 must give C_rent=1 and literal release 2")
+    s80 = v80["slot_counter"]
+    if (s80["original"], s80["replacement"], s80["C_rent_slot"] - s80["total_released"]) != (1, 0, 0):
+        bad.append("#80 ratified slot_counter must give A=1, B=0, refund 0 (yellowpaper section 5.4)")
     r48 = by["yellowpaper#48"]["readings"]
     if r48["literal_R12_2"]["reopen_without_extra_escrow"] or not r48["free_at_finalize"]["reopen_without_extra_escrow"]:
         bad.append("#48 literal R12.2 must lose the slot; free-at-finalize must reopen")
+    v70 = {x["pinned"]: x["readings"]["withdraw_wins"] for x in by["yellowpaper#70"]["vectors"]}
+    if v70[True]["withdraw"] != "rejected:Pinned" or v70[False]["withdraw"] != "ok":
+        bad.append("#70 ratified R5.3f must reject withdrawal while pinned and allow it unpinned")
     return bad
 
 
