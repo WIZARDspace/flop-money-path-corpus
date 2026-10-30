@@ -31,6 +31,14 @@ Standard library only. Python ≥ 3.10. Exact arithmetic (`fractions.Fraction`),
   They differ by one base unit whenever that product is not a multiple of 10⁶: `payable=1050` gives
   1040/10 under floor and 1039/11 under ceil. `payable=99` gives a zero earmark under floor. The
   same split applies on `force_settle` (F.3 derives `payable` as the tariff `P` there).
+  Devnet picks floor, for the 99/1 split it runs today (D-0533). A cooperative `settle` earmarks
+  `floor(escrow × audit_fee_split_ppm / 10⁶)` and pays the miner the rest, so `miner_paid + earmark`
+  equals the escrow to the base unit. That matches the "1% carve with floor" reading. Measured on
+  tzkv-runtime 1014003 at finalized block 2,509,218: all 8 sampled settles with a fractional carve
+  match floor, and ceil is one unit off on each
+  ([yellowpaper#79](https://github.com/flop-labs/yellowpaper/issues/79#issuecomment-6533543990);
+  J0ngAh reports the same for all 238 settled channels on [yellowpaper#224](https://github.com/flop-labs/yellowpaper/issues/224)). The text at 56410c6 still names no
+  rule, and ratified D-0525 adds two more products of `payable` (85% and 15%) with no rounding named.
 - **#80 (resolved in 0.5.0 by D-0524).** On the pack's counterexample, each rule broke one of the old R5.4f's requirements. The rule
   that pays the replacement (remainder carry) does so by flooring the original below its mandated
   `R_i(t_i)`. The thread already establishes the contradiction (issue body, pepedesigner's
