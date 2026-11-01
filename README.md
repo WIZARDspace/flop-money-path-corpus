@@ -2,7 +2,7 @@
 
 Executable golden vectors for the money-path discharge packs posted on the FLOP yellowpaper on
 2026-09-28 (yellowpaper #71, #79, #80, #48, #70), against
-`flop-labs/yellowpaper@b03378c0` (the 2026-10-13 0.5.0 draft sync; first published against `3c97bbc8`).
+`flop-labs/yellowpaper@56410c67` (the 2026-10-26 0.5.0 draft sync; first published against `3c97bbc8`, re-pinned from `b03378c0`).
 
 Appendix F's corpus (`evidence/wire-format-v1.json`) covers wire encodings only. These packs ask for
 balance-level vectors. For each pack this corpus computes the terminal balances under **every

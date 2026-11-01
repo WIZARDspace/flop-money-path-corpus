@@ -11,7 +11,7 @@ reading: the corpus makes the divergence executable so a decision can be checked
     uv run --script money_path.py --write    # regenerate money-path-v0.json
     uv run --script money_path.py --check    # fail if the JSON is stale or an expectation breaks
 
-Source text: flop-labs/yellowpaper@b03378c0 (yellowpaper.md, 0.5.0 draft sync). Packs: sv's 2026-09-28
+Source text: flop-labs/yellowpaper@56410c67 (yellowpaper.md, 2026-10-26 0.5.0 draft sync). Packs: sv's 2026-09-28
 discharge comments on yellowpaper #71, #79, #80, #48, #70.
 """
 
@@ -23,7 +23,7 @@ from fractions import Fraction
 from math import ceil, floor
 from pathlib import Path
 
-SOURCE = "flop-labs/yellowpaper@b03378c0a6d5194d69e5be90968f46e8e6813cb8"
+SOURCE = "flop-labs/yellowpaper@56410c67b11292e707d32ef32e9c4ff9c02e28c7"
 OUT = Path(__file__).with_name("money-path-v0.json")
 PPM = 1_000_000
 FLOP = 10**18  # base units per FLOP (R12.1d)

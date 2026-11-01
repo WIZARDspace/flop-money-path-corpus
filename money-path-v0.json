@@ -1,6 +1,6 @@
 {
   "version": "money-path-v0",
-  "source": "flop-labs/yellowpaper@b03378c0a6d5194d69e5be90968f46e8e6813cb8",
+  "source": "flop-labs/yellowpaper@56410c67b11292e707d32ef32e9c4ff9c02e28c7",
   "base_unit_per_flop": 1000000000000000000,
   "cases": [
     {
